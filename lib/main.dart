@@ -57,7 +57,15 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             // Seek bar
             Expanded(
-              child: AudioRadialSeekBar(),
+              child: AudioPlaylistComponent(
+                playlistBuilder: (BuildContext context, Playlist playlist, Widget child) {
+                  final DemoSong song = demoPlaylist.songs[playlist.activeIndex];
+
+                  return AudioRadialSeekBar(
+                    imageUrl: song.albumArtUrl,
+                  );
+                },
+              ),
             ),
 
             // Visualizer
@@ -66,7 +74,16 @@ class _HomePageState extends State<HomePage> {
               height: 125.0,
             ),
 
-            BottomControls(),
+            AudioPlaylistComponent(
+              playlistBuilder: (BuildContext context, Playlist playlist, Widget child) {
+                final DemoSong song = demoPlaylist.songs[playlist.activeIndex];
+
+                return BottomControls(
+                  songTitle: song.songTitle,
+                  artistName: song.artist,
+                );
+              },
+            )
           ],
         ),
       ),

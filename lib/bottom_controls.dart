@@ -5,8 +5,14 @@ import 'theme.dart';
 
 
 class BottomControls extends StatelessWidget {
+
+  final String songTitle;
+  final String artistName;
+
   const BottomControls({
     Key key,
+    this.songTitle,
+    this.artistName,
   }) : super(key: key);
 
   @override
@@ -23,11 +29,12 @@ class BottomControls extends StatelessWidget {
             children: <Widget>[
               // title & artist
               RichText(
+                textAlign: TextAlign.center,
                 text: TextSpan(
                   text: '',
                   children: [
                     TextSpan(
-                      text: 'Song Title\n',
+                      text: '${songTitle.toUpperCase()}\n',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14.0,
@@ -38,7 +45,7 @@ class BottomControls extends StatelessWidget {
                     ),
 
                     TextSpan(
-                      text: 'Artist Name\n',
+                      text: '${artistName.toUpperCase()}\n',
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.75),
                         fontSize: 12.0,

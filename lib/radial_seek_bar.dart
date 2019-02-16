@@ -12,11 +12,13 @@ class RadialSeekBar extends StatefulWidget {
   final double progress;
   final double seekPercent;
   final Function(double) onSeekRequested;
+  final Widget child;
 
   RadialSeekBar({
     this.progress = 0.0,
     this.seekPercent = 0.0,
     this.onSeekRequested,
+    this.child,
   });
 
   @override
@@ -103,10 +105,7 @@ class _RadialSeekBarState extends State<RadialSeekBar> {
               innerPadding: EdgeInsets.all(10.0),
               child: ClipOval(
                 clipper: CircleClipper(),
-                child: Image.network(
-                  demoPlaylist.songs[0].albumArtUrl,
-                  fit: BoxFit.cover,
-                ),
+                child: widget.child,
               ),
             ),
           ),

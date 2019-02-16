@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:fluttery_audio/fluttery_audio.dart';
 import 'radial_seek_bar.dart';
+import 'theme.dart';
 
 
 class AudioRadialSeekBar extends StatefulWidget {
+
+  final String imageUrl;
+
+  AudioRadialSeekBar({
+    this.imageUrl
+  });
+
   @override
   _AudioRadialSeekBarState createState() => _AudioRadialSeekBarState();
 }
@@ -36,6 +44,13 @@ class _AudioRadialSeekBarState extends State<AudioRadialSeekBar> {
             final seekMillis = (player.audioLength.inMilliseconds * seekPercent).round();
             player.seek(Duration(milliseconds: seekMillis));
           },
+          child: Container(
+            color: accentColor,
+            child: Image.network(
+              widget.imageUrl,
+              fit: BoxFit.cover,
+            ),
+          )
         );
       },
     );
